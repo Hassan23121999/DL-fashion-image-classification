@@ -5,7 +5,7 @@ import numpy as np
 import os
 
 # Load the pre-trained model
-model = tf.keras.models.load_model('./model/fashion_mnist_cnn_model.h5')
+model = tf.keras.models.load_model('model/fashion_mnist_cnn_model.h5')
 
 # Defuene class names
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
@@ -14,6 +14,14 @@ class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
 
 # Function to preprocess the image
 def preprocess_image(image):
+    """Preprocess an image for the Fashion MNIST model.
+
+    Args:
+        image (str): Path to the image file.
+
+    Returns:
+        np.ndarray: Preprocessed image array with shape (1, 28, 28).
+    """
     img = Image.open(image)
     img = img.resize((28, 28)).convert('L')  # Resize and convert to grayscale
     img_array = np.array(img) / 255.0  # Normalize the image
